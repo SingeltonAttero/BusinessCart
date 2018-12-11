@@ -11,6 +11,7 @@ import com.yakov.weber.businesscart.presenter.MainView
 import com.yakov.weber.businesscart.system.message.SystemMessageNotifier
 import com.yakov.weber.businesscart.system.message.SystemMessageType
 import com.yakov.weber.businesscart.toothpick.DI
+import com.yakov.weber.businesscart.ui.navigation.NavigationFragment
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
@@ -36,7 +37,9 @@ class MainActivity : MvpAppCompatActivity() , MainView {
         Toothpick.inject(this,Toothpick.openScope(DI.AppScope))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        test_btn.setOnClickListener { presenter.test() }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.app_container,NavigationFragment())
+            .commit()
     }
 
     override fun onStart() {

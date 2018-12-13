@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-            android:id="@+id/main_menu"
+            android:id="@+id/ready_menu"
             android:title="@string/done_text"
-            android:icon="@drawable/ic_ac_unit"
+            android:icon="@drawable/ic_done"
     />
     <item
-            android:id="@+id/create_card_menu"
+            android:id="@+id/draft_menu"
             android:title="@string/draft_text"
-            android:icon="@drawable/ic_picture_as_pdf"
+            android:icon="@drawable/ic_favorite_menu"
     />
     <item
-            android:id="@+id/setting_menu"
+            android:id="@+id/statistic_menu"
             android:title="@string/statistics_text"
-            android:icon="@drawable/ic_pages"
+            android:icon="@drawable/ic_extension"
     />
 
 </menu>

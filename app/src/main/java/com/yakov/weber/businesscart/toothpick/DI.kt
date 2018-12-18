@@ -1,5 +1,6 @@
 package com.yakov.weber.businesscart.toothpick
 
 object DI {
-    val AppScope = "app module"
+    const val APP_SCOPE = "app module"
+    const val NAVIGATION_SCOPE = "navigation scope"
 }

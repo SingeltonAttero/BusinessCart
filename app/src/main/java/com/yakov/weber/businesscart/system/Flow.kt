@@ -8,16 +8,13 @@ import ru.terrakok.cicerone.Screen
  * @author YWeber
  * project BusinessCart */
  
-class FlowRouter() : Router(){
-    fun startFlow(screen:Screen){
-        navigateTo(screen)
-    }
+class FlowRouter(private val appRouter: Router) : Router(){
+    fun startFlow(screen:Screen)= appRouter.navigateTo(screen)
 
-    fun newRootFlow(screen:Screen){
-        newRootScreen(screen)
-    }
 
-    fun toExit(){
-        exit()
-    }
+    fun newRootFlow(screen:Screen)= appRouter.newRootScreen(screen)
+
+
+    fun toExit() = appRouter.exit()
+
 }

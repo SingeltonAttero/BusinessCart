@@ -3,6 +3,7 @@ package com.yakov.weber.businesscart.presenter.navigation
 import com.arellomobile.mvp.InjectViewState
 import com.yakov.weber.businesscart.Screens
 import com.yakov.weber.businesscart.presenter.global.BasePresenter
+import com.yakov.weber.businesscart.system.FlowRouter
 import com.yakov.weber.businesscart.system.ResourceManager
 import com.yakov.weber.businesscart.system.message.SystemMessageNotifier
 import ru.terrakok.cicerone.Router
@@ -13,9 +14,9 @@ import javax.inject.Inject
  * @author YWeber
  * project BusinessCart */
 @InjectViewState
-class NavigationPresenter @Inject constructor(private val resourceManager: ResourceManager,
-                                              private val systemMessage: SystemMessageNotifier,
-                                              private val router: Router) : BasePresenter<NavigationView>() {
+class NavigationPresenter @Inject constructor(private val flowRouter: FlowRouter) : BasePresenter<NavigationView>() {
 
-    fun openReadyFlow() = router.newRootScreen(Screens.ReadyFlow)
+    fun openReadyFlow() = flowRouter.startFlow(Screens.ReadyFlow)
+    fun goToStatisticFlow() = flowRouter.startFlow(Screens.StatisticFlow)
+    fun goToDraftFlow() = flowRouter.startFlow(Screens.DraftFlow)
 }

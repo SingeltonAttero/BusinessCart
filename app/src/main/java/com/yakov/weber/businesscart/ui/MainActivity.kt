@@ -15,6 +15,7 @@ import com.yakov.weber.businesscart.system.message.SystemMessageType
 import com.yakov.weber.businesscart.toothpick.DI
 import io.reactivex.disposables.Disposable
 import org.jetbrains.anko.toast
+import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
@@ -29,7 +30,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     @ProvidePresenter
     fun providerPresenter(): MainPresenter = Toothpick
-        .openScope(DI.AppScope)
+        .openScope(DI.APP_SCOPE)
         .getInstance(MainPresenter::class.java)
 
     @Inject
@@ -41,17 +42,17 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     private var disposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Toothpick.inject(this, Toothpick.openScope(DI.AppScope))
+        Toothpick.inject(this, Toothpick.openScope(DI.APP_SCOPE))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
-    private val navigator = object : SupportAppNavigator(this, supportFragmentManager, R.id.app_container) {
+    private val navigator :Navigator  by lazy {  object : SupportAppNavigator(this, supportFragmentManager, R.id.app_container) {
         override fun setupFragmentTransaction(
-            command: Command?,
-            currentFragment: Fragment?,
-            nextFragment: Fragment?,
-            fragmentTransaction: FragmentTransaction?
+                command: Command?,
+                currentFragment: Fragment?,
+                nextFragment: Fragment?,
+                fragmentTransaction: FragmentTransaction?
         ) {
             fragmentTransaction?.setReorderingAllowed(true)
         }
@@ -59,7 +60,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         override fun activityBack() {
             finish()
         }
-    }
+    } }
 
     fun setToolbar(toolbar: Toolbar?) {
         if (toolbar != null) {
@@ -75,7 +76,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         navigationHolder.setNavigator(navigator)
         systemMessage()
     }
-
     override fun onPause() {
         navigationHolder.removeNavigator()
         disposable?.dispose()

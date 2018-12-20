@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:layout_width="wrap_content"
+          android:id="@+id/email_card"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginTop="@dimen/middle_size_margin_include"
+          android:drawableTop="@drawable/ic_email_white"
+          android:drawablePadding="@dimen/middle_size_margin_include"
+          android:textSize="@dimen/very_small_text_size"
+          android:textColor="@color/whiteText"
+          android:textStyle="normal"
+          tools:text="example@gmail.com"/>

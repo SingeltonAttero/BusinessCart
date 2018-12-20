@@ -1,5 +1,8 @@
 package com.yakov.weber.businesscart.extension
 
+import android.support.annotation.LayoutRes
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import timber.log.Timber
 
 /**
@@ -12,3 +15,5 @@ inline fun <reified T> T.printConstruction() = Timber.d("Construction: ${T::clas
 
 // debug logger
 fun <T> T.alsoPrintDebug(message: String = "Timber logger"): T = this.also { Timber.d("$message : $this") }
+
+fun ViewGroup.inflate(@LayoutRes layoutRes: Int) = LayoutInflater.from(context).inflate(layoutRes, this, false)

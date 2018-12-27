@@ -10,6 +10,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.yakov.weber.businesscart.system.disposable.ComponentDisposableBind
 import com.yakov.weber.businesscart.system.disposable.ComponentDisposableBindImpl
 import com.yakov.weber.businesscart.ui.MainActivity
+import com.yakov.weber.businesscart.ui.ProgressDialogFragment
 
 /**
  * Created on 10.12.18
@@ -17,6 +18,10 @@ import com.yakov.weber.businesscart.ui.MainActivity
  * project BusinessCart */
 
 abstract class BaseFragment : MvpAppCompatFragment(),ComponentDisposableBind by ComponentDisposableBindImpl(){
+
+    companion object {
+        const val DIALOG_TAG = "dialog fragment"
+    }
 
     abstract val layoutRes: Int @LayoutRes get
 
@@ -28,6 +33,19 @@ abstract class BaseFragment : MvpAppCompatFragment(),ComponentDisposableBind by 
         val mainActivity = activity as MainActivity
         toolbar.title = title
         mainActivity.setToolbar(toolbar)
+    }
+
+
+    fun showDialog(progress:Boolean){
+        val fragment = childFragmentManager.findFragmentByTag(DIALOG_TAG)
+        if (fragment != null && !progress){
+            (fragment as ProgressDialogFragment).dismissAllowingStateLoss()
+            childFragmentManager.executePendingTransactions()
+        }else if (fragment == null && progress){
+            val progressDialogFragment = ProgressDialogFragment()
+            progressDialogFragment.show(childFragmentManager, DIALOG_TAG)
+            childFragmentManager.executePendingTransactions()
+        }
     }
 
     override fun onDestroy() {

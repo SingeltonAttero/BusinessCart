@@ -9,7 +9,7 @@ import com.yakov.weber.businesscart.R
 import com.yakov.weber.businesscart.entity.BusinessCard
 import com.yakov.weber.businesscart.model.MockData
 import com.yakov.weber.businesscart.ui.global.BaseFragment
-import com.yakov.weber.businesscart.ui.ready.adapter.CardAdapter
+import com.yakov.weber.businesscart.adapter.CardAdapter
 import kotlinx.android.synthetic.main.fragment_ready.*
 import org.jetbrains.anko.support.v4.toast
 

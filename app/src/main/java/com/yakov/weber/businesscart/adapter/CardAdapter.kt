@@ -1,4 +1,4 @@
-package com.yakov.weber.businesscart.ui.ready.adapter
+package com.yakov.weber.businesscart.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

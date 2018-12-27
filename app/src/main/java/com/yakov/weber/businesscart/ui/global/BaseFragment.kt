@@ -29,7 +29,7 @@ abstract class BaseFragment : MvpAppCompatFragment(),ComponentDisposableBind by 
         return inflater.inflate(layoutRes,container,false)
     }
 
-    fun setToolbar(toolbar:Toolbar,title:String = ""){
+    open fun setToolbar(toolbar:Toolbar,title:String = ""){
         val mainActivity = activity as MainActivity
         toolbar.title = title
         mainActivity.setToolbar(toolbar)

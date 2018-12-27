@@ -4,4 +4,9 @@
     <string name="draft_text">Черновик</string>
     <string name="done_text">Готовые</string>
     <string name="stub"/>
+    <string name="input_name">Введите Имя</string>
+    <string name="input_mail">Введите e-mail</string>
+    <string name="input_address">Введите адрес</string>
+    <string name="create">Создать</string>
+    <string name="next">Дальше</string>
 </resources>
